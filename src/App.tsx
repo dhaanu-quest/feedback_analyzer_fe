@@ -46,7 +46,7 @@ import { transformData } from './utils/transformData';
 // };
 
 function App() {
-  const { user, isAuthenticated, login, register, logout, skip } = useAuth();
+  let { user, isAuthenticated, login, register, logout, skip, userData } = useAuth();
   const [file, setFile] = useState<File | null>(null);
   const [data, setData] = useState<TransformedData | null>(null);
   const [integrationConfig, setIntegrationConfig] = useState<IntegrationConfig>({});
@@ -65,12 +65,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [previousFiles, setPreviousFiles] = useState<Array<{ id: string; jsonData: string; promptResults?: string; userId: string; fileName: string }>>([]);
-
-  const userDataString = localStorage.getItem('auth');
-  let userData = {
-    userId: '',
-    email: ''
-  }
 
   useEffect(() => {
     const API_BASE_URL = 'http://localhost:8080/api/feedbacks';
@@ -116,23 +110,10 @@ function App() {
 
   useEffect(() => {
     if (apiResponse) {
-      console.log(apiResponse)
       const transformedData = transformData(apiResponse);
       setData(transformedData);
     }
   }, [apiResponse]);
-
-
-
-  if (userDataString) {
-    try {
-      userData = JSON.parse(userDataString);
-    } catch (error) {
-      console.error('Error parsing user data from localStorage:', error);
-    }
-  } else {
-    console.log('No user data found in localStorage.');
-  }
 
   if (!userData?.userId && !user && !isAuthenticated) {
     return <AuthForm onLogin={login} onRegister={register} onSkip={skip} />;
