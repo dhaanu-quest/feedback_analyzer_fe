@@ -184,7 +184,7 @@ function App() {
                       key={index}
                       className="cursor-pointer p-4 bg-white rounded shadow-sm hover:shadow-md transition"
                       onClick={() => {
-                        setApiResponse(JSON.parse(csv.promptResults))
+                        csv?.promptResults && setApiResponse(JSON.parse(csv?.promptResults))
                       }}
                     >
                       {csv.fileName}
