@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FileUpload } from './components/FileUpload';
 import { AnalysisSection } from './components/AnalysisSection';
@@ -63,7 +63,6 @@ function App() {
   });
   const [apiResponse, setApiResponse] = useState<APIResponse | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [previousFiles, setPreviousFiles] = useState<Array<{ id: string; jsonData: string; promptResults?: string; userId: string; fileName: string }>>([]);
 
   useEffect(() => {
@@ -105,7 +104,6 @@ function App() {
   const handleFileUploadSuccess = (response: APIResponse) => {
     setApiResponse(response);
     setLoading(false);
-    setError(null);
   };
 
   useEffect(() => {
@@ -244,7 +242,7 @@ function App() {
                 {data.themes.map((theme, index) => (
                   <div key={index} className="mb-6 last:mb-0">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">{theme.category}</h3>
-                    <DataList items={theme.items} />
+                    <DataList items={theme.items} sectionName={'key_themes'} category={theme.category}/>
                   </div>
                 ))}
               </div>

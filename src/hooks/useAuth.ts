@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { User, AuthState } from '../types';
+import { AuthState } from '../types';
 import axios from 'axios';
 
 export function useAuth() {
@@ -58,7 +58,7 @@ export function useAuth() {
         password,
       });
 
-      const { email: userEmail, token, userId } = response.data;
+      const { email: userEmail, userId } = response.data;
 
       setAuthState({
         user: {

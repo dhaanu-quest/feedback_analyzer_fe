@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Settings } from 'lucide-react';
 import { Modal } from './Modal';
 import { IntegrationConfig } from '../types';
