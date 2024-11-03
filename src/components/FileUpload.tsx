@@ -11,12 +11,17 @@ interface FileUploadProps {
 export function FileUpload({ onFileSelect, onUploadSuccess }: FileUploadProps) {
   const API_BASE_URL = 'http://localhost:8080/api/feedbacks';
 
+  const authString = localStorage.getItem('auth');
+  const auth = authString ? JSON.parse(authString) : { email: '', userId: '' };
+  const userId = auth.userId || '';
+
   const handleFileUpload = useCallback(async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('userId', userId);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/csv/upload-feedback`, formData, {
+      const response = await axios.post(`${API_BASE_URL}/csv/upload-feedback?`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

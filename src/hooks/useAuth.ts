@@ -73,8 +73,11 @@ export function useAuth() {
         userId: userId,
       });
 
+      alert('Logged in successfully!')
+
       return { success: true };
     } catch (error) {
+      alert('Invalid credentials')
       return { success: false, error: 'Invalid credentials' };
     }
   }, []);
@@ -101,8 +104,11 @@ export function useAuth() {
         userId: userInfo.userId,
       });
 
+      alert('You are registered successfully, please proceed to login!')
+
       return { success: true };
     } catch (error) {
+      alert('Registration failed')
       return { success: false, error: 'Registration failed' };
     }
   }, []);

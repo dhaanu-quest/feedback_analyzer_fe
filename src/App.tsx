@@ -72,7 +72,7 @@ function App() {
       if (userData?.userId) {
         try {
           setLoading(true);
-          const response = await axios.get(`${API_BASE_URL}/get-feedback`);
+          const response = await axios.get(`${API_BASE_URL}/get-feedback?userId=${userData?.userId}`);
           const data = response.data.data;
 
           setPreviousFiles(data);
@@ -239,10 +239,10 @@ function App() {
               onToggle={() => toggleSection('themes')}
             >
               <div className="max-h-80 overflow-y-auto">
-                {data.themes.map((theme, index) => (
+                {data.themes?.map((theme, index) => (
                   <div key={index} className="mb-6 last:mb-0">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">{theme.category}</h3>
-                    <DataList items={theme.items} sectionName={'key_themes'} category={theme.category}/>
+                    <DataList items={theme.items} sectionName={'key_themes'} category={theme.category} />
                   </div>
                 ))}
               </div>
@@ -254,7 +254,7 @@ function App() {
               onToggle={() => toggleSection('priorities')}
             >
               <div className="max-h-80 overflow-y-auto">
-                {data.priorities.map((priority, index) => (
+                {data.priorities?.map((priority, index) => (
                   <div key={index} className="mb-6 last:mb-0">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">
                       {priority.level} Priority
@@ -288,7 +288,7 @@ function App() {
             >
               <div className="max-h-80 overflow-y-auto">
                 <DataList
-                  items={data.problems.map(p => p.issue)}
+                  items={data.problems?.map(p => p.issue)}
                   className="mt-2"
                 />
               </div>
@@ -317,7 +317,7 @@ function App() {
             >
               <div className="max-h-80 overflow-y-auto">
                 <DataList
-                  items={data.retention.map(r => r.strategy)}
+                  items={data.retention?.map(r => r.strategy)}
                   className="mt-2"
                 />
               </div>
