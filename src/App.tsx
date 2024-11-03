@@ -13,38 +13,6 @@ import { FileQuestion } from 'lucide-react';
 import { APIResponse, TransformedData, IntegrationConfig } from './types';
 import { transformData } from './utils/transformData';
 
-// const sampleResponse: APIResponse = {
-//   sentiment_analysis: {
-//     positive: 1,
-//     negative: 5,
-//     neutral: 0,
-//     user_sentiments: [
-//       { userId: "U123", sentiment: "positive", feedback: "Great app, love the features!" },
-//       { userId: "U124", sentiment: "negative", feedback: "App crashes frequently" },
-//       { userId: "U125", sentiment: "negative", feedback: "Poor customer support" }
-//     ]
-//   },
-//   theme_category: {
-//     performance_issues: ["The reports are too slow to load.", "The app crashes every time I try to export."],
-//     feature_requests: ["I would love a dark mode option."],
-//     onboarding_and_usability: ["The onboarding process is confusing."],
-//     customer_support: ["Customer support is slow to respond."],
-//     pricing: []
-//   },
-//   priority: {
-//     high: ["The app crashes every time I try to export.", "Customer support is slow to respond."],
-//     moderate: ["The reports are too slow to load.", "The onboarding process is confusing."],
-//     low: ["I would love a dark mode option."]
-//   },
-//   feature_requests: [{ request: "Dark mode option", priority: "Low" }],
-//   key_problems: ["The app crashes every time I try to export.", "Customer support is slow to respond.", "The reports are too slow to load."],
-//   churn_prediction: [
-//     { userId: "U124", prediction: "High risk of churning due to app stability issues", risk_level: "high" },
-//     { userId: "U125", prediction: "Medium risk due to support dissatisfaction", risk_level: "medium" }
-//   ],
-//   retention_strategies: ["Improve the stability of the app to prevent crashes during exports.", "Accelerate response times for customer support requests."]
-// };
-
 function App() {
   let { user, isAuthenticated, login, register, logout, skip, userData } = useAuth();
   const [file, setFile] = useState<File | null>(null);
