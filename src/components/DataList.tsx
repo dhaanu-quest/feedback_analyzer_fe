@@ -34,15 +34,18 @@ export function DataList({ items, className = '', sectionName, category }: DataL
           },
         }
       );
-      console.log('Jira task created:', response.data);
+      if (response.data.success) {
+        alert('Jira issue created!');
+      }
     } catch (error) {
-      console.error('Error creating Jira task:', error);
+      console.error('Error creating Jira issue:', error);
+      alert('Error creating Jira issue!');
     }
   };
 
 
   const handleClickUpClick = async (item: string) => {
-    
+
     if (!userId) {
       alert('Please login to use this feature!')
     }
@@ -60,9 +63,12 @@ export function DataList({ items, className = '', sectionName, category }: DataL
           },
         }
       );
-      console.log('ClickUp task created:', response.data);
+      if (response.data.success) {
+        alert('ClickUp task created!');
+      }
     } catch (error) {
       console.error('Error creating ClickUp task:', error);
+      alert('Error creating ClickUp task!');
     }
   };
 
