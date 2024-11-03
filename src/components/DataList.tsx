@@ -15,6 +15,11 @@ export function DataList({ items, className = '', sectionName, category }: DataL
   const userId = auth.userId || '';
 
   const handleJiraClick = async (item: string) => {
+
+    if (!userId) {
+      alert('Please login to use this feature!')
+    }
+
     const feedback = {
       summary: `Issue - ${item}`,
       description: `${category}`,
@@ -37,6 +42,10 @@ export function DataList({ items, className = '', sectionName, category }: DataL
 
 
   const handleClickUpClick = async (item: string) => {
+    
+    if (!userId) {
+      alert('Please login to use this feature!')
+    }
     const feedback = {
       summary: `Task - ${item}`,
       description: `${category}`,
