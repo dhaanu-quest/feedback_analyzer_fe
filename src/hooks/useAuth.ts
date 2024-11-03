@@ -112,7 +112,7 @@ export function useAuth() {
       return { success: true };
     } catch (error) {
       console.log(error)
-      alert(error?.response?.data?.message || 'Registration failed')
+      alert('Registration failed')
       return { success: false, error: 'Registration failed' };
     }
   }, []);
