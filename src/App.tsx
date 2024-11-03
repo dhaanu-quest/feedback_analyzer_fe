@@ -66,7 +66,6 @@ function App() {
 
   const handleIntegrationSave = (config: IntegrationConfig) => {
     setIntegrationConfig(config);
-    console.log('Integration settings saved:', config);
   };
 
   const handleFileUploadSuccess = (response: APIResponse) => {

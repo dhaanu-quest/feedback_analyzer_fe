@@ -31,7 +31,7 @@ export function FileUpload({ onFileSelect, onUploadSuccess }: FileUploadProps) {
     } catch (error) {
       console.error('Error uploading file:', error);
     }
-  }, []);
+  }, [userId]);
 
 
   const handleDrop = useCallback((e: React.DragEvent) => {
