@@ -15,14 +15,17 @@ export interface APIResponse {
     positive: {
       count: number;
       userIds: string[];
+      feedbacks: string[];
     };
     negative: {
       count: number;
       userIds: string[];
+      feedbacks: string[];
     };
     neutral: {
       count: number;
       userIds: string[];
+      feedbacks: string[];
     };
   };
   theme_category: {
@@ -64,12 +67,12 @@ export interface TransformedData {
     satisfied: Array<{
       userId: string;
       sentiment: string;
-      // feedback: string;
+      feedbacks: string;
     }>;
     dissatisfied: Array<{
       userId: string;
       sentiment: string;
-      // feedback: string;
+      feedbacks: string;
     }>;
   };
   themes: Array<{

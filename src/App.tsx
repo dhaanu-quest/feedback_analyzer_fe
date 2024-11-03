@@ -203,7 +203,7 @@ function App() {
             </AnalysisSection>
 
             <AnalysisSection
-              title="User Segments"
+              title="User Feedbacks"
               isOpen={openSections.userSegments}
               onToggle={() => toggleSection('userSegments')}
             >

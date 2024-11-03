@@ -1,7 +1,8 @@
 import { APIResponse, TransformedData } from '../types';
 
 export function transformData(data: APIResponse): TransformedData {
-  // Transform sentiment data
+
+  console.log(data)
   const totalSentiment = data.sentiment_analysis.positive.count +
     data.sentiment_analysis.negative.count +
     data.sentiment_analysis.neutral.count;
@@ -30,16 +31,29 @@ export function transformData(data: APIResponse): TransformedData {
     }
   ];
 
-  // Segment users based on sentiment using userIds
   const userSegments = {
     satisfied: [
-      ...data.sentiment_analysis.positive.userIds.map(userId => ({ userId, sentiment: 'Positive' })),
-      ...data.sentiment_analysis.neutral.userIds.map(userId => ({ userId, sentiment: 'Neutral' }))
+      ...data.sentiment_analysis.positive.feedbacks.map((feedback, index) => ({
+        feedback,
+        userId: data.sentiment_analysis.positive.userIds[index] || null,
+        sentiment: 'Positive'
+      })),
+      ...data.sentiment_analysis.neutral.feedbacks.map((feedback, index) => ({
+        feedback,
+        userId: data.sentiment_analysis.neutral.userIds[index] || null,
+        sentiment: 'Neutral'
+      }))
     ],
-    dissatisfied: data.sentiment_analysis.negative.userIds.map(userId => ({ userId, sentiment: 'Negative' }))
+    dissatisfied: [
+      ...data.sentiment_analysis.negative.feedbacks.map((feedback, index) => ({
+        feedback,
+        userId: data.sentiment_analysis.negative.userIds[index] || null,
+        sentiment: 'Negative'
+      }))
+    ]
   };
 
-  // Transform themes
+
   const themes = [
     {
       category: 'Performance Issues',
@@ -63,7 +77,6 @@ export function transformData(data: APIResponse): TransformedData {
     }
   ].filter(theme => theme.items.length > 0);
 
-  // Transform priorities
   const priorities = [
     {
       level: 'High',
@@ -79,22 +92,18 @@ export function transformData(data: APIResponse): TransformedData {
     }
   ].filter(priority => priority.items.length > 0);
 
-  // Transform features
   const features = data.feature_requests?.map(item => ({
     request: item.request,
     priority: item.priority
   }));
 
-  // Transform problems
   const problems = data.key_problems?.map(issue => ({ issue }));
 
-  // Transform churn prediction
   const churnPrediction = data.churn_prediction?.map(item => ({
     userId: item.userId,
     reason: item.reason
   }));
 
-  // Transform retention strategies
   const retention = data.retention_strategies?.map(strategy => ({ strategy }));
 
   return {
