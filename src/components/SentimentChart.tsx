@@ -9,14 +9,12 @@ interface SentimentChartProps {
 }
 
 export function SentimentChart({ data }: SentimentChartProps) {
-  // Define colors for each category
   const COLORS = {
     Positive: '#22c55e',
     Negative: '#ef4444',
     Neutral: '#3b82f6'
   };
 
-  // Prepare chart options for ECharts
   const getChartOptions = () => {
     return {
       tooltip: {
@@ -33,7 +31,7 @@ export function SentimentChart({ data }: SentimentChartProps) {
       },
       legend: {
         orient: 'horizontal',
-        bottom: '10%',
+        bottom: '5%',
         textStyle: {
           color: '#4B5563'
         }
@@ -45,7 +43,7 @@ export function SentimentChart({ data }: SentimentChartProps) {
           radius: ['40%', '70%'],
           label: {
             show: true,
-            formatter: '{d}%', // Show percentage in the label
+            formatter: '{d}%', 
             color: '#ffffff',
             fontSize: 12
           },
