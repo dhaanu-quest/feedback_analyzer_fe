@@ -34,20 +34,20 @@ export function transformData(data: APIResponse): TransformedData {
   const userSegments = {
     satisfied: [
       ...data.sentiment_analysis.positive.feedbacks.map((feedback, index) => ({
-        feedback,
-        userId: data.sentiment_analysis.positive.userIds[index] || null,
+        feedbacks: feedback,
+        userId: data.sentiment_analysis.positive.userIds[index] || '',
         sentiment: 'Positive'
       })),
       ...data.sentiment_analysis.neutral.feedbacks.map((feedback, index) => ({
-        feedback,
-        userId: data.sentiment_analysis.neutral.userIds[index] || null,
+        feedbacks: feedback,
+        userId: data.sentiment_analysis.neutral.userIds[index] || '',
         sentiment: 'Neutral'
       }))
     ],
     dissatisfied: [
       ...data.sentiment_analysis.negative.feedbacks.map((feedback, index) => ({
-        feedback,
-        userId: data.sentiment_analysis.negative.userIds[index] || null,
+        feedbacks: feedback,
+        userId: data.sentiment_analysis.negative.userIds[index] || '',
         sentiment: 'Negative'
       }))
     ]

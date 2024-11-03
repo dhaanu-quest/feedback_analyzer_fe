@@ -58,11 +58,7 @@ export interface TransformedData {
     count: number;
     percentage: number;
   }>;
-  // userSentiments: Array<{
-  //   userId: string;
-  //   sentiment: string;
-  //   feedback: string;
-  // }>;
+
   userSegments: {
     satisfied: Array<{
       userId: string;
