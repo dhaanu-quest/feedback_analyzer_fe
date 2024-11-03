@@ -2,7 +2,6 @@ import { APIResponse, TransformedData } from '../types';
 
 export function transformData(data: APIResponse): TransformedData {
 
-  console.log(data)
   const totalSentiment = data.sentiment_analysis.positive.count +
     data.sentiment_analysis.negative.count +
     data.sentiment_analysis.neutral.count;
@@ -33,26 +32,25 @@ export function transformData(data: APIResponse): TransformedData {
 
   const userSegments = {
     satisfied: [
-      ...data.sentiment_analysis.positive.feedbacks.map((feedback, index) => ({
+      ...data.sentiment_analysis.positive.feedbacks?.map((feedback, index) => ({
         feedbacks: feedback,
         userId: data.sentiment_analysis.positive.userIds[index] || '',
         sentiment: 'Positive'
       })),
-      ...data.sentiment_analysis.neutral.feedbacks.map((feedback, index) => ({
+      ...data.sentiment_analysis.neutral.feedbacks?.map((feedback, index) => ({
         feedbacks: feedback,
         userId: data.sentiment_analysis.neutral.userIds[index] || '',
         sentiment: 'Neutral'
       }))
     ],
     dissatisfied: [
-      ...data.sentiment_analysis.negative.feedbacks.map((feedback, index) => ({
+      ...data.sentiment_analysis.negative.feedbacks?.map((feedback, index) => ({
         feedbacks: feedback,
         userId: data.sentiment_analysis.negative.userIds[index] || '',
         sentiment: 'Negative'
       }))
     ]
   };
-
 
   const themes = [
     {

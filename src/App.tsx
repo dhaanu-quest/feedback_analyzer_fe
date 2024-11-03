@@ -182,7 +182,7 @@ function App() {
                     columns={[
                       { header: 'User ID', accessor: 'userId' },
                       { header: 'Sentiment', accessor: 'sentiment' },
-                      { header: 'Feedback', accessor: 'feedback' }
+                      { header: 'Feedback', accessor: 'feedbacks' }
                     ]}
                     data={data.userSegments.satisfied}
                   />
@@ -193,7 +193,7 @@ function App() {
                     columns={[
                       { header: 'User ID', accessor: 'userId' },
                       { header: 'Sentiment', accessor: 'sentiment' },
-                      { header: 'Feedback', accessor: 'feedback' }
+                      { header: 'Feedback', accessor: 'feedbacks' }
                     ]}
                     data={data.userSegments.dissatisfied}
                   />
