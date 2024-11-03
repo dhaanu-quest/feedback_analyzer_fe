@@ -9,8 +9,8 @@ interface FileUploadProps {
 }
 
 export function FileUpload({ onFileSelect, onUploadSuccess }: FileUploadProps) {
-  const API_BASE_URL = 'http://localhost:8080/api/feedbacks';
-
+  const API_BASE_URL = 'https://addons.questprotocol.xyz/api/feedbacks';
+  
   const authString = localStorage.getItem('auth');
   const auth = authString ? JSON.parse(authString) : { email: '', userId: '' };
   const userId = auth.userId || '';

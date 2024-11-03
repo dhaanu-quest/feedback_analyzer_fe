@@ -41,7 +41,7 @@ export function useAuth() {
   const [authState, setAuthState] = useState<AuthState>(initialAuthState);
   const [userData, setUserData] = useState<{ userId: string; email: string } | null>(initialUserData);
 
-  const API_BASE_URL = 'http://localhost:8080/api';
+  const API_BASE_URL = 'https://addons.questprotocol.xyz/api';
 
   useEffect(() => {
     if (userData) {
@@ -90,7 +90,7 @@ export function useAuth() {
         password,
       });
 
-      const { userInfo } = response.data;
+      const userInfo = response.data.data;
 
       if (response.data.success) {
         alert('You are registered successfully, please proceed to login!')

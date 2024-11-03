@@ -28,7 +28,7 @@ export function IntegrationSettings({ onSave, currentConfig }: IntegrationSettin
   const [config, setConfig] = useState<IntegrationConfig>(currentConfig || {});
   const [activeTab, setActiveTab] = useState<'jira' | 'clickup'>('jira');
 
-  const API_BASE_URL = 'http://localhost:8080/api/integrations';
+  const API_BASE_URL = 'https://addons.questprotocol.xyz/api/integrations';
 
   const storedAuth = JSON.parse(localStorage.getItem('auth') || '{}');
   const userId = storedAuth?.userId;

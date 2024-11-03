@@ -8,7 +8,7 @@ interface DataListProps {
 }
 
 export function DataList({ items, className = '', sectionName, category }: DataListProps) {
-  const API_BASE_URL = 'http://localhost:8080/api/integrations';
+  const API_BASE_URL = 'https://addons.questprotocol.xyz/api/integrations';
   const authString = localStorage.getItem('auth');
   const auth = authString ? JSON.parse(authString) : { email: '', userId: '' };
   const email = auth.email || '';

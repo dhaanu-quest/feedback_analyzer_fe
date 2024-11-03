@@ -34,7 +34,7 @@ function App() {
   const [previousFiles, setPreviousFiles] = useState<Array<{ id: string; jsonData: string; promptResults?: string; userId: string; fileName: string }>>([]);
 
   useEffect(() => {
-    const API_BASE_URL = 'http://localhost:8080/api/feedbacks';
+    const API_BASE_URL = 'https://addons.questprotocol.xyz/api/feedbacks';
 
     const fetchCSVList = async () => {
       if (userData?.userId) {
