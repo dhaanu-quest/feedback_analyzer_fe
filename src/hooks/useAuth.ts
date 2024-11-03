@@ -77,6 +77,7 @@ export function useAuth() {
 
       return { success: true };
     } catch (error) {
+      console.log(error)
       alert('Invalid credentials')
       return { success: false, error: 'Invalid credentials' };
     }
@@ -91,6 +92,10 @@ export function useAuth() {
 
       const { userInfo } = response.data;
 
+      if (response.data.success) {
+        alert('You are registered successfully, please proceed to login!')
+      }
+
       setAuthState({
         user: {
           email: userInfo.email,
@@ -104,11 +109,10 @@ export function useAuth() {
         userId: userInfo.userId,
       });
 
-      alert('You are registered successfully, please proceed to login!')
-
       return { success: true };
     } catch (error) {
-      alert('Registration failed')
+      console.log(error)
+      alert(error?.response?.data?.message || 'Registration failed')
       return { success: false, error: 'Registration failed' };
     }
   }, []);
